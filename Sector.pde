@@ -1,11 +1,10 @@
-
 import java.util.Arrays;
 
 class Sector{  
   
-  public float water, hummus, lime, fert;
+  private float water, hummus, lime, fert;
   
-  
+  //a sector contains plants on it and has soil values
   public Sector(float water, float hummus, float lime, float fert)
   {
     this.water = water;
@@ -14,12 +13,13 @@ class Sector{
     this.fert = fert;    
   }
   
+  //to get values from a specific sector
   public float getWater() {return water;}
   public float getHummus() {return hummus;}
   public float getLime() {return lime;}
   public float getFert() {return fert;}
   
-  
+  //increases sector values with events (tractor, rain, ...) (negative when decreasing)
   public void incWater(float quantity) {water += quantity;}
   public void incHummus(float quantity) {hummus += quantity;}
   public void incLime(float quantity) {lime += quantity;}
