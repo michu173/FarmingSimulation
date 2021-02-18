@@ -4,8 +4,8 @@ class Plant{
     int fruit = 0;
     float stage = -6;
     float size;
-    int posX = 30; 
-    int posY = 20;
+    int posX = 20;
+    int posY = 40;
     int MAXFRUIT = 10;
     float clr = 5;
     Field field;

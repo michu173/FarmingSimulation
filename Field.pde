@@ -130,22 +130,22 @@ class Field {
   //GETTERS FOR FIELD SECTORS (for specific sector)
   public float Water(int x, int y)
   {
-    return Field[x][y].getWater();
+    return Field[x/10][y/10].getWater();
   }
   
   public float Hummus(int x, int y)
   {
-    return Field[x][y].getHummus();
+    return Field[x/10][y/10].getHummus();
   }
   
   public float Lime(int x, int y)
   {
-    return Field[x][y].getLime();
+    return Field[x/10][y/10].getLime();
   }
   
   public float Fert(int x, int y)
   {
-    return Field[x][y].getFert();
+    return Field[x/10][y/10].getFert();
   }
   
   
@@ -154,22 +154,22 @@ class Field {
   //SETTERS FOR FIELD SECTORS (updated with machines)
   public void updateWater(int x, int y, float quantity)
   {
-    Field[x][y].incWater(quantity);
+    Field[x/10][y/10].incWater(quantity);
   }
   
   public void updateHummus(int x, int y, float quantity)
   {
-    Field[x][y].incHummus(quantity);
+    Field[x/10][y/10].incHummus(quantity);
   }
   
   public void updateLime(int x, int y, float quantity)
   {
-    Field[x][y].incLime(quantity);
+    Field[x/10][y/10].incLime(quantity);
   }
   
   public void updateFert(int x, int y, float quantity)
   {
-    Field[x][y].incFert(quantity);
+    Field[x/10][y/10].incFert(quantity);
   }
 
 
