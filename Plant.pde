@@ -4,15 +4,17 @@ class Plant{
     int fruit = 0;
     float stage = -6;
     float size;
-    int posX = 20;
-    int posY = 40;
-    int MAXFRUIT = 10;
+    int posX = 5; 
+    int posY = 9;
+    int MAXFRUIT = (int) random(5,20);
     float clr = 5;
     Field field;
     
     
-    Plant(Field field){
+    Plant(Field field,int posx, int posy){
       this.field=field;
+      this.posX = posx;
+      this.posY = posy;
     }
     
     private void addFruit(){
@@ -47,7 +49,7 @@ class Plant{
     }
 
 
-     private void update(){
+      void update(){
        
        size = 1/(1+exp(-stage));
        
@@ -66,7 +68,7 @@ class Plant{
       push();
       colorMode(RGB);
       fill(255-(clr*25.5), 200+(clr*5.5), 0);
-      circle(posX, posY, 15*size);
+      circle(posX*(width/field.getSizeX()), posY*(height/field.getSizeY()), 15*size);
        pop();
     }
      
