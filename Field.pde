@@ -130,22 +130,22 @@ class Field {
   //GETTERS FOR FIELD SECTORS (for specific sector)
   public float Water(int x, int y)
   {
-    return Field[x/10][y/10].getWater();
+    return Field[x][y].getWater();
   }
   
   public float Hummus(int x, int y)
   {
-    return Field[x/10][y/10].getHummus();
+    return Field[x][y].getHummus();
   }
   
   public float Lime(int x, int y)
   {
-    return Field[x/10][y/10].getLime();
+    return Field[x][y].getLime();
   }
   
   public float Fert(int x, int y)
   {
-    return Field[x/10][y/10].getFert();
+    return Field[x][y].getFert();
   }
   
   

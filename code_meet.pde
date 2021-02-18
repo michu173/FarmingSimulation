@@ -2,6 +2,10 @@ Plant plant;
 Field field;
 int sectorSizeX, sectorSizeY;
 
+
+
+
+
 void setup(){
 
 
@@ -14,7 +18,7 @@ size(1000, 1000);
   
   //creates specific field
   //sizeX, sizeY, sunlight, cropType, avgWater, avgHummus, avgLime, avgFert, index
-  field = new Field(1000, 1000, 30.0, "test", 100.0, 100.0, 100.0, 100.0, 4356);
+  field = new Field(1000, 1000, 30.0, "test", 100.0, 90.0, 120.0, 100.0, 4256);
   plant = new Plant(field);
   field.create(); //initializes field based on avg values with noise based on index
   

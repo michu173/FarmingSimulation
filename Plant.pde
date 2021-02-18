@@ -6,7 +6,7 @@ class Plant{
     float size;
     int posX = 30; 
     int posY = 20;
-    int MAXFRUIT = 8;
+    int MAXFRUIT = 10;
     float clr = 5;
     Field field;
     
@@ -22,7 +22,7 @@ class Plant{
     }
     
     public void growth(){
-      float add = 0.1;
+      float add = 0.01;
       float waterDist=Math.abs(100-field.Water(posX, posY));
       float humusDist=Math.abs(100-field.Hummus(posX, posY));
       float limeDist =Math.abs(100-field.Lime(posX, posY));
@@ -64,6 +64,7 @@ class Plant{
     
     public void show(){
       push();
+      colorMode(RGB);
       fill(255-(clr*25.5), 200+(clr*5.5), 0);
       circle(posX, posY, 15*size);
        pop();
