@@ -100,7 +100,7 @@ class Field {
     {
       for(int y = 0; y < Field[x].length; y++)
       {
-        Field[x][y] = new Sector(waterNoise(x, y, avgWater, index), humusNoise(x, y, avgHummus, index), limeNoise(x, y, avgLime, index), fertNoise(x, y, avgFert, index));
+        Field[x][y] = new Sector(waterNoise(x, y, avgWater, index), humusNoise(x/10, y/10, avgHummus, index), limeNoise(x, y, avgLime, index), fertNoise(x, y, avgFert, index));
       }
     }
        
