@@ -44,20 +44,24 @@ abstract class TractorDrone {
     this.posY = y;
   }
   
-  public void tankFuel()
+  protected void tankFuel()
   {
     this.fuel = fuelTank;
   }
   
-  public void tankProduct()
+  protected void tankProduct()
   {
     this.product = productTank;
   }
   
-  public void emptyProduct()
+  protected void emptyProduct()
   {
     this.product = 0;
   }
+  
+  
+  abstract void atStation();
+  
   
   
   //DRIVING
@@ -69,10 +73,12 @@ abstract class TractorDrone {
     }
   }
   
+  
+  //TODO impement
   public void goToStation(){;}
   
+  //TODO impement
   public void workField(){;}
-  //inplement width
   
   
   
