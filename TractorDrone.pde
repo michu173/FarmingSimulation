@@ -94,12 +94,18 @@ abstract class TractorDrone {
   
   public boolean driveTo(float xPoint, float yPoint, float speed){
     
-   if(xPoint-this.posX>1||xPoint-this.posX<-1||yPoint-this.posY>1||yPoint-this.posY<-1){
+   if(xPoint-this.posX>speed||xPoint-this.posX<-speed){
       if(xPoint>this.posX){
         this.posX+=speed;
       }else if(xPoint<this.posX){
         this.posX-=speed;
-      }
+      }}else{
+        this.posX=xPoint;
+        
+        
+    }
+      
+      if(yPoint-this.posY>speed||yPoint-this.posY<-speed){
       
       if(yPoint>this.posY){
         this.posY+=speed;
@@ -107,12 +113,19 @@ abstract class TractorDrone {
         this.posY-=speed;
       }
       
-      return false;
+    }else{
+     
+    this.posY=yPoint;
+    }
+    
+    if(yPoint-this.posY>speed||yPoint-this.posY<-speed||xPoint-this.posX>speed||xPoint-this.posX<-speed){
+    return false;
     }else{return true;}
   }
 
 
     public void workField(Field field){
+      println(this.lastWorkedWP);
     int[][] waypoints = new int[(field.sizeX/(this.implementWidth*2))*4][2];
     for(int i = 0; i<waypoints.length/4; i++){
       for(int j = 0; j<4; j++){
@@ -137,7 +150,7 @@ abstract class TractorDrone {
        driveTo(waypoints[this.lastWorkedWP][0],waypoints[this.lastWorkedWP][1], this.workSpeed);
      }else{
        this.lastWorkedWP++;
-       if(this.lastWorkedWP==waypoints.length){
+       if(this.lastWorkedWP==waypoints.length-2){
          this.lastWorkedWP=0;
        }
      }
