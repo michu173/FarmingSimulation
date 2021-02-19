@@ -17,7 +17,7 @@ class Plant{
       this.posY = posy;
     }
     
-    private void addFruit(){
+    public void addFruit(){
       fruit = (int) (size*MAXFRUIT);
       
       
@@ -44,8 +44,8 @@ class Plant{
     
     private void colorChange(){
       float limeDist =Math.abs(100-field.Lime(posX,posY));
-     float fertDist = Math.abs(100-field.Fert(posX,posY));
-         clr= 10-((limeDist+fertDist)/20 );
+      float fertDist = Math.abs(100-field.Fert(posX,posY));
+      clr= 10-((limeDist+fertDist)/20 );
     }
 
 
@@ -56,7 +56,7 @@ class Plant{
       addFruit();
       growth();
       colorChange();
-   println ("size: "+size+" fruits: "+fruit+" color: "+clr);
+      println ("size: "+size+" fruits: "+fruit+" color: "+clr);
     }
 
     //float waterDist=Math.abs(100-field.water(posX, posY));
