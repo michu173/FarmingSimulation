@@ -5,6 +5,7 @@ abstract class TractorDrone {
   int implementWidth, productTank, fuelTank ;
   float fuelConsumption, posX, posY, workSpeed, movingSpeed, product, fuel;
   int lastWorkedWP=0;
+  boolean taskComplete = false;
   
   public TractorDrone(float workSpeed, float movingSpeed, int implementWidth, int productTank, int fuelTank, float fuelConsumption)
   {
@@ -149,9 +150,12 @@ abstract class TractorDrone {
     if(!driveTo(waypoints[this.lastWorkedWP][0],waypoints[this.lastWorkedWP][1], this.workSpeed)){
        driveTo(waypoints[this.lastWorkedWP][0],waypoints[this.lastWorkedWP][1], this.workSpeed);
      }else{
+       if(!this.taskComplete){
        this.lastWorkedWP++;
+     }
        if(this.lastWorkedWP==waypoints.length-2){
          this.lastWorkedWP=0;
+         this.taskComplete = true;
        }
      }
   }
