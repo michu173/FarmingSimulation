@@ -1,21 +1,23 @@
-import java.lang.Math.*;
+ import java.lang.Math.*;
 
 class Plant{
     int fruit = 0;
     float stage = -6;
     float size;
-    int posX = 30; 
-    int posY = 20;
-    int MAXFRUIT = 10;
+    float posX = 5; 
+    float posY = 9;
+    int MAXFRUIT = (int) random(5,20);
     float clr = 5;
     Field field;
     
     
-    Plant(Field field){
+    Plant(Field field,float posx, float posy){
       this.field=field;
+      this.posX = posx;
+      this.posY = posy;
     }
     
-    private void addFruit(){
+    public void addFruit(){
       fruit = (int) (size*MAXFRUIT);
       
       
@@ -42,19 +44,19 @@ class Plant{
     
     private void colorChange(){
       float limeDist =Math.abs(100-field.Lime(posX,posY));
-     float fertDist = Math.abs(100-field.Fert(posX,posY));
-         clr= 10-((limeDist+fertDist)/20 );
+      float fertDist = Math.abs(100-field.Fert(posX,posY));
+      clr= 10-((limeDist+fertDist)/20 );
     }
 
 
-     private void update(){
+      void update(){
        
        size = 1/(1+exp(-stage));
        
       addFruit();
       growth();
       colorChange();
-   println ("size: "+size+" fruits: "+fruit+" color: "+clr);
+      //println ("size: "+size+" fruits: "+fruit+" color: "+clr);
     }
 
     //float waterDist=Math.abs(100-field.water(posX, posY));
@@ -66,8 +68,8 @@ class Plant{
       push();
       colorMode(RGB);
       fill(255-(clr*25.5), 200+(clr*5.5), 0);
-      circle(posX, posY, 15*size);
-       pop();
+      circle(posX*(width/field.getSizeX()), posY*(height/field.getSizeY()), 15*size);
+      pop();
     }
      
 
