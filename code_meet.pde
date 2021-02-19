@@ -42,7 +42,7 @@ void setup(){
   
   
   
-  drone = new LimeSpreader(field, 1, 1, 50, 100000, 100000, 0);
+  drone = new LimeSpreader(field, 7, 5, 50, 100000, 100000, 0);
   drone.atStation();
   drone.setStartingPos(0,0);
   

@@ -79,12 +79,14 @@ abstract class TractorDrone {
   
   
   //DRIVING
-  public void needsStation()
+  public boolean needsStation()
   {
     if (needProduct() || needFuel())
     {
       goToStation();
+      return true;
     }
+    return false;
   }
   
   
@@ -106,7 +108,7 @@ abstract class TractorDrone {
       }
       
       return false;
-    }else{ return true;}
+    }else{return true;}
   }
 
 
@@ -122,17 +124,16 @@ abstract class TractorDrone {
         }
         
         if(j==0){
-          waypoints[i*4+j][0]=i*2*this.implementWidth;
+          waypoints[i*4+j][0]=i*2*this.implementWidth+(this.implementWidth/2);
         }else if(j==1||j==2){
-          waypoints[i*4+j][0]=i*2*this.implementWidth+this.implementWidth;
+          waypoints[i*4+j][0]=i*2*this.implementWidth+this.implementWidth+(this.implementWidth/2);
         }else if(j==3){
-          waypoints[i*4+j][0]=i*2*this.implementWidth+(2*this.implementWidth);
+          waypoints[i*4+j][0]=i*2*this.implementWidth+(2*this.implementWidth)+(this.implementWidth/2);
         }
       }
     }
     
-    
-     if(!driveTo(waypoints[this.lastWorkedWP][0],waypoints[this.lastWorkedWP][1], this.workSpeed)){
+    if(!driveTo(waypoints[this.lastWorkedWP][0],waypoints[this.lastWorkedWP][1], this.workSpeed)){
        driveTo(waypoints[this.lastWorkedWP][0],waypoints[this.lastWorkedWP][1], this.workSpeed);
      }else{
        this.lastWorkedWP++;
@@ -140,8 +141,7 @@ abstract class TractorDrone {
          this.lastWorkedWP=0;
        }
      }
-     }
-  
+  }
 
   
   public void goToStation(){
@@ -167,7 +167,7 @@ abstract class TractorDrone {
       fill(0);
       rect(this.posX-8, this.posY-8, 16, 16);
       fill(100);
-      line(this.posX-this.implementWidth, this.posY, this.posX+this.implementWidth, this.posY);
+      line(this.posX-(this.implementWidth/2), this.posY, this.posX+(this.implementWidth/2), this.posY);
     pop();
   }
   
