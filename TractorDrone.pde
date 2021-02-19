@@ -18,6 +18,10 @@ abstract class TractorDrone {
   }
   
   
+  
+  abstract void fieldWork();
+  
+  
   //GETTERS
   public float getPosX(){return posX;}
   public float getPosY(){return posY;}
@@ -137,6 +141,28 @@ abstract class TractorDrone {
   public void goToStation(){
     driveTo(this.posX, this.implementWidth/2, this.movingSpeed);
     driveTo(0,0, this.movingSpeed);
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  //GRAPHICAL DISPLAY
+  
+  void show(){
+    push();
+      fill(0);
+      rect(this.posX-8, this.posY-8, 16, 16);
+      fill(100);
+      line(this.posX-this.implementWidth, this.posY, this.posX+this.implementWidth, this.posY);
+    pop();
   }
   
 }
