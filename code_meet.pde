@@ -1,6 +1,10 @@
 Plant plant;
 Field field;
-LimeSpreader drone;
+LimeSpreader limeDrone;
+WaterSpreader waterDrone;
+FertSpreader fertDrone;
+SeederDrone seederDrone;
+
 int sectorSizeX, sectorSizeY;
 
 
@@ -20,16 +24,16 @@ void setup(){
   
   //creates specific field
   //sizeX, sizeY, sunlight, cropType, avgWater, avgHummus, avgLime, avgFert, index
-  field = new Field(1000, 1000, 30.0, "test", 100.0, 100.0, 50.0, 100.0, 4256);
+  field = new Field(1000, 1000, 30.0, "test", 50.0, 30.0, 60.0, 80.0, 4256);
   plant = new Plant(field, 400, 200);
   
   field.create(); //initializes field based on avg values with noise based on index
   
-  
+ /* 
   for(int i = 0; i<100; i++){
     plants.add(new Plant(field, random(0, field.getSizeX()), random(0, field.getSizeY())));
   }
-  
+  */
   
   //how big a sector is represented on screen so that every sector fits onto the screen
   sectorSizeX = width/field.getSectorsX();
@@ -39,19 +43,24 @@ void setup(){
   drawField(0);
   
   
-  
-  
-  
-  drone = new LimeSpreader(field, 5, 5, 50, 100000000, 100000000, 0);
-  drone.atStation();
-  drone.setStartingPos(0,0);
-  
+  seederDrone = new SeederDrone(5, 5, 50, 3000, 3000, 0);
+  fertDrone = new FertSpreader(field, 5, 5, 50, 3000, 3000, 0);
+  waterDrone = new WaterSpreader(field, 5, 5, 50, 3000, 3000, 0); 
+  limeDrone = new LimeSpreader(field, 5, 5, 50, 3000, 3000, 0);
+  limeDrone.atStation();
+  seederDrone.atStation();
+  fertDrone.atStation();
+  waterDrone.atStation();
+  limeDrone.setStartingPos(0,0);
+  seederDrone.setStartingPos(200,200);
+  fertDrone.setStartingPos(150,150);
+  waterDrone.setStartingPos(300,300);
 }
 
 void draw(){
   background(30, 30, 30);
   drawField(0);
-  
+  fieldDraw();
   for(int i= 0; i < plants.size(); i++)
   { 
     plants.get(i).update(); plants.get(i).show(); 
@@ -60,12 +69,19 @@ void draw(){
     
   plant.update();
   
-  fieldDraw();
+  
   plant.show();
   
+  waterDrone.fieldWork(field);
+  waterDrone.show();
   
+  limeDrone.fieldWork(field);
+  waterDrone.show();
   
-  drone.fieldWork(field);
-  drone.show();
+  fertDrone.fieldWork(field);
+  waterDrone.show();
+  
+  seederDrone.fieldWork();
+  waterDrone.show();
 
 }

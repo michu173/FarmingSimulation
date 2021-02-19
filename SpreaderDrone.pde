@@ -1,4 +1,3 @@
-
 public abstract class SpreaderDrone extends TractorDrone{
   private Field field;
   public SpreaderDrone(Field field, float workSpeed, float movingSpeed, int implementWidth, int productTank, int fuelTank, float fuelConsumption){
