@@ -4,14 +4,14 @@ class Plant{
     int fruit = 0;
     float stage = -6;
     float size;
-    int posX = 5; 
-    int posY = 9;
+    float posX = 5; 
+    float posY = 9;
     int MAXFRUIT = (int) random(5,20);
     float clr = 5;
     Field field;
     
     
-    Plant(Field field,int posx, int posy){
+    Plant(Field field,float posx, float posy){
       this.field=field;
       this.posX = posx;
       this.posY = posy;

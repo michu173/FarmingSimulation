@@ -25,7 +25,7 @@ void setup(){
   
   
   for(int i = 0; i<100; i++){
-    plants.add(new Plant(field, (int) random(0, field.getSizeX()), (int) random(0, field.getSizeY())));
+    plants.add(new Plant(field, random(0, field.getSizeX()), random(0, field.getSizeY())));
   }
   
   
