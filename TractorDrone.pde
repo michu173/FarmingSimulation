@@ -60,6 +60,14 @@ abstract class TractorDrone {
   }
   
   
+  public boolean arrivedAtStation(){
+    if (0 <= posX <= 1 && 0 <= posY <= 1)
+    {
+      return true;
+      atStation(); 
+    }
+  }
+  
   abstract void atStation();
   
   
