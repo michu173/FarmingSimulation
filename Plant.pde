@@ -56,7 +56,7 @@ class Plant{
       addFruit();
       growth();
       colorChange();
-      println ("size: "+size+" fruits: "+fruit+" color: "+clr);
+      //println ("size: "+size+" fruits: "+fruit+" color: "+clr);
     }
 
     //float waterDist=Math.abs(100-field.water(posX, posY));
