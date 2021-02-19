@@ -6,7 +6,10 @@ private class SamplerDrone extends TractorDrone{
   public void atStation(){
   tankFuel();
 }
-  protected void fieldWork(){
+  public void fieldWork(){
   needsStation();
+  }
+    boolean needProduct(){
+    return false;
   }
 }

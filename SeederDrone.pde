@@ -11,7 +11,7 @@ private class SeederDrone extends TractorDrone{
 }
 
   public void plant(){
-    if (posY < 1 || posY > field.getSizeY -1)
+    if (getPosY() < 1 || getPosY() > field.getSizeY() -1)
     print("lets shake it");
     
     else if (0 <= posY % 5 && posY % 5 <= 1)
@@ -32,4 +32,9 @@ private class SeederDrone extends TractorDrone{
       return false;
   }
   
+  
+  public void fieldWork(){
+    needsStation();
+    plant();
+  }
 }

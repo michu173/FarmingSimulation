@@ -24,13 +24,13 @@ private class HarvesterDrone extends TractorDrone{
   }
   */
   public void atStation(){
-    giveStation(product);
+   // giveStation(product);
     emptyProduct();
     tankFuel();
   }
-  protected void fieldWork(){
+  public void fieldWork(){
   needsStation();
-    
+  //fill()
   }
 
 }
