@@ -1,4 +1,5 @@
-private abstract class LimeSpreader extends SpreaderDrone{
+
+public class LimeSpreader extends SpreaderDrone{
     public LimeSpreader(Field field, float workSpeed, float movingSpeed, int implementWidth, int productTank, int fuelTank, float fuelConsumption){
     super(field, workSpeed,movingSpeed,implementWidth, productTank, fuelTank, fuelConsumption);
     
@@ -14,9 +15,13 @@ private abstract class LimeSpreader extends SpreaderDrone{
       field.updateLime(posX, posY, (100-limestate));
     }
   }
-  public void fieldWork(){
-  needsStation();
-  updateField(this.getPosX(), this.getPosY());
+  
+  public void fieldWork(Field field){
+    
+    if (!needsStation()){
+      this.workField(field);
+      updateField(this.getPosX(), this.getPosY());
+    }   
   
   }
 

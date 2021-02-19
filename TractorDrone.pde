@@ -4,7 +4,6 @@ abstract class TractorDrone {
 
   int implementWidth, productTank, fuelTank ;
   float fuelConsumption, posX, posY, workSpeed, movingSpeed, product, fuel;
-  int lastWorkedWP=0;
   
   public TractorDrone(float workSpeed, float movingSpeed, int implementWidth, int productTank, int fuelTank, float fuelConsumption)
   {
@@ -79,12 +78,14 @@ abstract class TractorDrone {
   
   
   //DRIVING
-  public void needsStation()
+  public boolean needsStation()
   {
     if (needProduct() || needFuel())
     {
       goToStation();
+      return true;
     }
+    return false;
   }
   
   
@@ -92,7 +93,7 @@ abstract class TractorDrone {
   
   public boolean driveTo(float xPoint, float yPoint, float speed){
     
-   if(xPoint-this.posX>1||xPoint-this.posX<-1||yPoint-this.posY>1||yPoint-this.posY<-1){
+   while(xPoint-this.posX>1||xPoint-this.posX<-1||yPoint-this.posY>1||yPoint-this.posY<-1){
       if(xPoint>this.posX){
         this.posX+=speed;
       }else if(xPoint<this.posX){
@@ -106,7 +107,9 @@ abstract class TractorDrone {
       }
       
       return false;
-    }else{ return true;}
+    }
+    
+    return true;
   }
 
 
@@ -131,17 +134,10 @@ abstract class TractorDrone {
       }
     }
     
-    
-     if(!driveTo(waypoints[this.lastWorkedWP][0],waypoints[this.lastWorkedWP][1], this.workSpeed)){
-       driveTo(waypoints[this.lastWorkedWP][0],waypoints[this.lastWorkedWP][1], this.workSpeed);
-     }else{
-       this.lastWorkedWP++;
-       if(this.lastWorkedWP==waypoints.length){
-         this.lastWorkedWP=0;
-       }
+     for(int i = 0; i<waypoints.length; i++){
+        driveTo(waypoints[i][0],waypoints[i][1], this.workSpeed);
      }
-     }
-  
+  }
 
   
   public void goToStation(){

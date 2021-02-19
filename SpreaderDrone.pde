@@ -1,4 +1,5 @@
-private abstract class SpreaderDrone extends TractorDrone{
+
+public abstract class SpreaderDrone extends TractorDrone{
   private Field field;
   public SpreaderDrone(Field field, float workSpeed, float movingSpeed, int implementWidth, int productTank, int fuelTank, float fuelConsumption){
   super(workSpeed,movingSpeed,implementWidth, productTank, fuelTank, fuelConsumption);
@@ -12,7 +13,7 @@ private abstract class SpreaderDrone extends TractorDrone{
   
   public void fieldWork(){
   needsStation();
-  updateField(this.getPosX, this.getPosY);
+  updateField(this.getPosX(), this.getPosY());
   
   }
 

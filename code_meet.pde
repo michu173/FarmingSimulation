@@ -1,5 +1,6 @@
 Plant plant;
 Field field;
+LimeSpreader drone;
 int sectorSizeX, sectorSizeY;
 
 
@@ -21,6 +22,7 @@ void setup(){
   //sizeX, sizeY, sunlight, cropType, avgWater, avgHummus, avgLime, avgFert, index
   field = new Field(1000, 1000, 30.0, "test", 50.0, 90.0, 120.0, 100.0, 4256);
   plant = new Plant(field, 400, 200);
+  
   field.create(); //initializes field based on avg values with noise based on index
   
   
@@ -35,10 +37,20 @@ void setup(){
   
   //initial display
   drawField(0);
+  
+  
+  
+  
+  
+  drone = new LimeSpreader(field, 1, 1, 50, 100000, 100000, 0);
+  drone.atStation();
+  drone.setStartingPos(0,0);
+  
 }
 
 void draw(){
- 
+  background(30, 30, 30);
+  drawField(0);
   
   for(int i= 0; i < plants.size(); i++)
   { 
@@ -50,5 +62,10 @@ void draw(){
   
   fieldDraw();
   plant.show();
+  
+  
+  
+  drone.fieldWork(field);
+  drone.show();
 
 }
