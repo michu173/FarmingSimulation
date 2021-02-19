@@ -161,24 +161,32 @@ class Field {
   
   
   //SETTERS FOR FIELD SECTORS (updated with machines)
-  public void updateWater(int x, int y, float quantity)
+  public void updateWater(float x, float y, int quantity)
   {
-    Field[x/10][y/10].incWater(quantity);
+    int intx = (int) Math.round(x);
+    int inty = (int) Math.round(y);
+    Field[intx/10][inty/10].incWater(quantity);
   }
   
-  public void updateHummus(int x, int y, float quantity)
+  public void updateHummus(float x, float y, int quantity)
   {
-    Field[x/10][y/10].incHummus(quantity);
+    int intx = (int) Math.round(x);
+    int inty = (int) Math.round(y);
+    Field[intx/10][inty/10].incHummus(quantity);
   }
   
-  public void updateLime(int x, int y, float quantity)
+  public void updateLime(float x, float y, int quantity)
   {
-    Field[x/10][y/10].incLime(quantity);
+    int intx = (int) Math.round(x);
+    int inty = (int) Math.round(y);
+    Field[intx/10][inty/10].incLime(quantity);
   }
   
-  public void updateFert(int x, int y, float quantity)
+  public void updateFert(float x, float y, int quantity)
   {
-    Field[x/10][y/10].incFert(quantity);
+    int intx = (int) Math.round(x);
+    int inty = (int) Math.round(y);
+    Field[intx/10][inty/10].incFert(quantity);
   }
 
 
