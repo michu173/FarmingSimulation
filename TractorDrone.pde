@@ -61,11 +61,12 @@ abstract class TractorDrone {
   
   
   public boolean arrivedAtStation(){
-    if (0 <= posX <= 1 && 0 <= posY <= 1)
+    if (0 <= posX && posX <= 1 && 0 <= posY && posY <= 1)
     {
+      atStation();
       return true;
-      atStation(); 
     }
+    return false;
   }
   
   abstract void atStation();
@@ -82,12 +83,60 @@ abstract class TractorDrone {
   }
   
   
-  //TODO impement
-  public void goToStation(){;}
-  
-  //TODO impement
-  public void workField(){;}
   
   
+  public boolean driveTo(float xPoint, float yPoint, float speed){
+    
+   while(xPoint-this.posX>1||xPoint-this.posX<-1||yPoint-this.posY>1||yPoint-this.posY<-1){
+      if(xPoint>this.posX){
+        this.posX+=speed;
+      }else if(xPoint<this.posX){
+        this.posX-=speed;
+      }
+      
+      if(yPoint>this.posY){
+        this.posY+=speed;
+      }else if(yPoint<this.posY){
+        this.posY-=speed;
+      }
+      
+      return false;
+    }
+    
+    return true;
+  }
+
+
+    public void workField(Field field){
+    int[][] waypoints = new int[(field.sizeX/(this.implementWidth*2))*4][2];
+    for(int i = 0; i<waypoints.length/4; i++){
+      for(int j = 0; j<4; j++){
+        
+        if(j==2||j==3){
+           waypoints[i*4+j][1]=this.implementWidth/2;
+        }else{
+           waypoints[i*4+j][1]=field.sizeY-this.implementWidth/2;
+        }
+        
+        if(j==0){
+          waypoints[i*4+j][0]=i*2*this.implementWidth;
+        }else if(j==1||j==2){
+          waypoints[i*4+j][0]=i*2*this.implementWidth+this.implementWidth;
+        }else if(j==3){
+          waypoints[i*4+j][0]=i*2*this.implementWidth+(2*this.implementWidth);
+        }
+      }
+    }
+    
+     for(int i = 0; i<waypoints.length; i++){
+        driveTo(waypoints[i][0],waypoints[i][1], this.workSpeed);
+     }
+  }
+
+  
+  public void goToStation(){
+    driveTo(this.posX, this.implementWidth/2, this.movingSpeed);
+    driveTo(0,0, this.movingSpeed);
+  }
   
 }
