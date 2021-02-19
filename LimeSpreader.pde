@@ -13,11 +13,12 @@ public class LimeSpreader extends SpreaderDrone{
     for (int i=0; i<=implementWidth; i++)
     {
       try{
-        float deployPosX = posX - (implementWidth/2) + i;
+        float deployPosX = posX - (implementWidth/2)+5 + i;
         
         int limestate = (int) field.Lime(deployPosX, posY);
         if (limestate <= 100){
         field.updateLime(deployPosX, posY, (100-limestate));
+        product -= (100-limestate);
         }
       }
       catch(Exception e) {

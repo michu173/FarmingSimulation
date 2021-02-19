@@ -67,8 +67,11 @@ abstract class TractorDrone {
   
   
   public boolean arrivedAtStation(){
-    if (0 <= posX && posX <= 1 && 0 <= posY && posY <= 1)
+    //println("im here");
+    //println("I'm at: " + posX + ", " + posY);
+    if (posX <= 30 && posY <= 30)
     {
+      println("what do i do now?");
       atStation();
       return true;
     }
