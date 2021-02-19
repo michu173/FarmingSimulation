@@ -34,9 +34,5 @@ public abstract class SpreaderDrone extends TractorDrone{
     return false;
   }
   
-  public void atStation(){
-    tankProduct();
-    tankFuel();
-  }
 
 }
