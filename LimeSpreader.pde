@@ -4,10 +4,7 @@ public class LimeSpreader extends SpreaderDrone{
     super(field, workSpeed,movingSpeed,implementWidth, productTank, fuelTank, fuelConsumption);
     
 }
-  public void atStation(){
-  tankProduct();
-  tankFuel();
-}
+
   
   void updateField(float posX, float posY){
     for (int i=0; i<=implementWidth; i++)
@@ -21,28 +18,10 @@ public class LimeSpreader extends SpreaderDrone{
         product -= (100-limestate);
         }
       }
-      catch(Exception e) {
-        
-      }
-
-
+      catch(Exception e) { }
     }
   }
   
-  public void fieldWork(Field field){
-    
-    if (!needsStation()){
-      this.workField(field);
-      updateField(this.getPosX(), this.getPosY());
-    }   
   
-  }
-
-  boolean needProduct(){
-    if (product <= 10){
-      return true;
-    }
-    else
-      return false;
-  }
+  
 }
