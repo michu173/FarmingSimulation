@@ -57,7 +57,7 @@ class Field {
   float limeNoise(int x, int y, float avg,int offset){
     float water;
   
-    water = avg+((5*sin(x+(sin(offset*0.5)*3)))+((5*cos(y+(sin(offset*0.5)*3)))));
+    water = avg+((5*sin((x+(sin(offset*0.5)*3))*0.2))+((5*cos((y+(sin(offset*0.5)))*0.1))));
   
   if(water>200){water=200;}
   if(water<0){water=0;}
@@ -101,7 +101,7 @@ class Field {
     {
       for(int y = 0; y < Field[x].length; y++)
       {
-        Field[x][y] = new Sector(waterNoise(x, y, avgWater, index), humusNoise(x/10, y/10, avgHummus, index), limeNoise(x, y, avgLime, index), fertNoise(x, y, avgFert, index));
+        Field[x][y] = new Sector(waterNoise(x, y, avgWater, index), humusNoise(x, y, avgHummus, index), limeNoise(x, y, avgLime, index), fertNoise(x, y, avgFert, index));
       }
     }
        

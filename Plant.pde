@@ -1,4 +1,4 @@
-import java.lang.Math.*;
+ import java.lang.Math.*;
 
 class Plant{
     int fruit = 0;
@@ -69,7 +69,7 @@ class Plant{
       colorMode(RGB);
       fill(255-(clr*25.5), 200+(clr*5.5), 0);
       circle(posX*(width/field.getSizeX()), posY*(height/field.getSizeY()), 15*size);
-       pop();
+      pop();
     }
      
 

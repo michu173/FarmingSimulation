@@ -54,9 +54,9 @@ void fieldDraw(){
 void drawField(int type){
   if(type == 0) //start
   {
-    for(int x = 0; x < field.getSectorsX(); x++)
+    for(int x = 0; x < field.getSizeX(); x++)
     {
-      for(int y = 0; y < field.getSectorsY(); y++)
+      for(int y = 0; y < field.getSizeY(); y++)
       {
         //println("type: " + type); //TODO for debugging purposes only
         //println("x: " + x); //TODO for debugging purposes only
@@ -73,7 +73,7 @@ void drawField(int type){
     {
       for(int y = 0; y < field.getSectorsY(); y++)
       {
-        int col = (int)map(field.Water(x, y), 0.0, 200.0, 0.0, 170.0);
+        int col = (int)map(field.Water(x*10, y*10), 0.0, 200.0, 0.0, 170.0);
         fill(col, 255, 255);
         rect(x*sectorSizeX, y*sectorSizeY, sectorSizeX, sectorSizeY);    
       } 
@@ -86,7 +86,7 @@ void drawField(int type){
     {
       for(int y = 0; y < field.getSectorsY(); y++)
       {
-        int col = (int)map(field.Hummus(x, y), 0.0, 200.0, 0.0, 170.0);
+        int col = (int)map(field.Hummus(x*10, y*10), 0.0, 200.0, 0.0, 170.0);
         fill(col, 255, 255);
         rect(x*sectorSizeX, y*sectorSizeY, sectorSizeX, sectorSizeY);    
       } 
@@ -99,7 +99,7 @@ void drawField(int type){
     {
       for(int y = 0; y < field.getSectorsY(); y++)
       {
-        int col = (int)map(field.Lime(x, y), 0.0, 200.0, 0.0, 170.0);
+        int col = (int)map(field.Lime(x*10, y*10), 0.0, 200.0, 0.0, 170.0);
         fill(col, 255, 255);
         rect(x*sectorSizeX, y*sectorSizeY, sectorSizeX, sectorSizeY);    
       } 
@@ -112,7 +112,7 @@ void drawField(int type){
     {
       for(int y = 0; y < field.getSectorsY(); y++)
       {
-        int col = (int)map(field.Fert(x, y), 0.0, 200.0, 0.0, 170.0);
+        int col = (int)map(field.Fert(x*10, y*10), 0.0, 200.0, 0.0, 170.0);
         fill(col, 255, 255);
         rect(x*sectorSizeX, y*sectorSizeY, sectorSizeX, sectorSizeY);    
       } 
