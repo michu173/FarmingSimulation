@@ -1,6 +1,6 @@
-private abstract class WaterSpreader extends SpreaderDrone{
-    public SpreaderDrone(float workSpeed, float movingSpeed, int implementWidth, int productTank, int fuelTank, float fuelConsumption){
-    super(workSpeed,movingSpeed,implementWidth, productTank, fuelTank, fuelConsumption);
+private abstract class LimeSpreader extends SpreaderDrone{
+    public LimeSpreader(Field field, float workSpeed, float movingSpeed, int implementWidth, int productTank, int fuelTank, float fuelConsumption){
+    super(field, workSpeed,movingSpeed,implementWidth, productTank, fuelTank, fuelConsumption);
     
 }
   public void atStation(){
@@ -8,13 +8,13 @@ private abstract class WaterSpreader extends SpreaderDrone{
   tankFuel();
 }
   
-  private void updateField(float positionX, float positionY){
-    int limestate = Lime(posX/10, posY/10);
+  void updateField(float posX, float posY){
+    int limestate = (int) field.Lime(posX/10, posY/10);
     if (limestate <= 100){
-      updateLime (posX, posY, (100-waterstate));
+      field.updateLime(posX, posY, (100-limestate));
     }
   }
-  protected void fieldWork(){
+  public void fieldWork(){
   needsStation();
   updateField(this.getPosX(), this.getPosY());
   

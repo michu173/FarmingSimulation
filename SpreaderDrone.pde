@@ -1,16 +1,16 @@
 private abstract class SpreaderDrone extends TractorDrone{
-    public SpreaderDrone(float workSpeed, float movingSpeed, int implementWidth, int productTank, int fuelTank, float fuelConsumption){
-    super(workSpeed,movingSpeed,implementWidth, productTank, fuelTank, fuelConsumption);
-    
+  private Field field;
+  public SpreaderDrone(Field field, float workSpeed, float movingSpeed, int implementWidth, int productTank, int fuelTank, float fuelConsumption){
+  super(workSpeed,movingSpeed,implementWidth, productTank, fuelTank, fuelConsumption);
+    this.field = field;
 }
   public void atStation(){
   tankProduct();
   tankFuel();
 }
-  private updateField(float posX, float posY){
-  }
+  abstract void updateField(float posX, float posY);
   
-  protected void fieldWork(){
+  public void fieldWork(){
   needsStation();
   updateField(this.getPosX, this.getPosY);
   
