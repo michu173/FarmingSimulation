@@ -3,7 +3,7 @@ java.lang.Math
 abstract class TractorDrone {
 
   int implementWidth, productTank, fuelTank ;
-  float fuelConsumption, posX, posY, workSpeed, movingSpeed, posX, posY, workSpeed, movingSpeed, product, fuel;
+  float fuelConsumption, posX, posY, workSpeed, movingSpeed, product, fuel;
   
   public TractorDrone(float workSpeed, float movingSpeed, int implementWidth, int productTank, int fuelTank, float fuelConsumption)
   {
