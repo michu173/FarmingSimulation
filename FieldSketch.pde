@@ -53,7 +53,7 @@ void fieldDraw(){
 
 void drawField(int type){
   if(type == 0) //start
-  {
+   {/*
     for(int x = 0; x < field.getSizeX(); x++)
     {
       for(int y = 0; y < field.getSizeY(); y++)
@@ -64,7 +64,12 @@ void drawField(int type){
         fill(85, 255, 128);
         rect(x*sectorSizeX, y*sectorSizeY, sectorSizeX, sectorSizeY);    
       } 
-    }    
+    }    */
+    
+    push();
+    colorMode(RGB);
+    background(0, 100, 0);
+    pop();
   }  
   
   if(type == 1) //water
