@@ -16,15 +16,21 @@ private class HarvesterDrone extends TractorDrone{
 //has to be finished latertakeFruits
 //deletePlant at coordinates; -->isEmpty set to true}
 
-  private fill(){
+/*  private  fill(){
     if (posX == isEmpty && posY == isEmpty){
       //remove Fruits add to counter
       //remove plant
     }
   }
-  
+  */
   public void atStation(){
-  emptyProduct();
-  tankFuel();
-}
+    giveStation(product);
+    emptyProduct();
+    tankFuel();
+  }
+  protected void fieldWork(){
+  needsStation();
+    
+  }
+
 }

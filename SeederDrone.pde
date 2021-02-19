@@ -11,7 +11,25 @@ private class SeederDrone extends TractorDrone{
 }
 
   public void plant(){
-    plants.add(new Plant(field, getPosX(), getPosY()));
-
+    if (posY < 1 || posY > field.getSizeY -1)
+    print("lets shake it");
+    
+    else if (0 <= posY % 5 && posY % 5 <= 1)
+   {
+    for (int i = 0; i <= implementWidth; i++){
+      float plantX = posX - (implementWidth / 2) + i;
+      product -= 1;
+      plants.add(new Plant(field, plantX, posY));
+    }
+    
   }
+}
+  boolean needProduct(){
+    if (product <= 10){
+      return true;
+    }
+    else
+      return false;
+  }
+  
 }
