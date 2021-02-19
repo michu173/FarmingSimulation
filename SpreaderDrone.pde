@@ -14,16 +14,12 @@ public abstract class SpreaderDrone extends TractorDrone{
   public void fieldWork(Field field){
   
     if (!needsStation()){
+      workField(field);
       updateField(this.getPosX(), this.getPosY());
-      lastX = posX;
-      lastY = posY;
+      //lastX = posX;
+      //lastY = posY;
       }
-    
-    if(isBack == false)
-    {
-      goBack();  
-    }
-    else{ workField(field);}
+      
   }
   
   boolean needProduct(){
