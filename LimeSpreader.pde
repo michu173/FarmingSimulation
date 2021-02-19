@@ -10,9 +10,21 @@ public class LimeSpreader extends SpreaderDrone{
 }
   
   void updateField(float posX, float posY){
-    int limestate = (int) field.Lime(posX/10, posY/10);
-    if (limestate <= 100){
-      field.updateLime(posX, posY, (100-limestate));
+    for (int i=0; i<=implementWidth; i++)
+    {
+      try{
+        float deployPosX = posX - (implementWidth/2)+5 + i;
+        
+        int limestate = (int) field.Lime(deployPosX/10, posY/10);
+        if (limestate <= 100){
+        field.updateLime(deployPosX, posY, (100-limestate));
+        }
+      }
+      catch(Exception e) {
+        
+      }
+
+
     }
   }
   
