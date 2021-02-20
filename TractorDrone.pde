@@ -58,7 +58,7 @@ abstract class TractorDrone {
   protected void tankProduct()
   {
     this.product = productTank;
-    println("producttank" + product);
+    println("producttank " + product);
   }
   
   protected void emptyProduct()
@@ -69,7 +69,7 @@ abstract class TractorDrone {
   
   public boolean arrivedAtStation(){
     println("im here");
-    println("I'm at: " + posX + ", " + posY);
+    //println("I'm at: " + posX + ", " + posY);
     if (posX <= 30 && posY <= 30)
     {
       println("what do i do now?");
@@ -86,7 +86,7 @@ abstract class TractorDrone {
   //DRIVING
   public boolean needsStation()
   {
-    println("Do I need product? :O");
+    //println("Do I need product? :O");
     if (needProduct() || needFuel())
     {
       println("i need Product!");

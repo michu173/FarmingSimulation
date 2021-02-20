@@ -1,4 +1,3 @@
-
 public abstract class SpreaderDrone extends TractorDrone{
   private Field field;
   public SpreaderDrone(Field field, float workSpeed, float movingSpeed, int implementWidth, int productTank, int fuelTank, float fuelConsumption){
@@ -11,17 +10,16 @@ public abstract class SpreaderDrone extends TractorDrone{
 }
   abstract void updateField(float posX, float posY);
   
-  public void fieldWork(Field field){
+    public void fieldWork(){
   
     if (!needsStation()){
+      workField(field);
       updateField(this.getPosX(), this.getPosY());
-      lastX = posX;
-      lastY = posY;
-    
-        }
+     // lastX = posX;
+      //lastY = posY;
       }
-    
-    
+      
+  }
   
   boolean needProduct(){
   if (product <= 10){
@@ -31,9 +29,5 @@ public abstract class SpreaderDrone extends TractorDrone{
     return false;
   }
   
-  public void atStation(){
-    tankProduct();
-    tankFuel();
-  }
 
 }
