@@ -10,7 +10,7 @@ public abstract class SpreaderDrone extends TractorDrone{
 }
   abstract void updateField(float posX, float posY);
   
-  public void fieldWork(Field field){
+    public void fieldWork(){
   
     if (!needsStation()){
       workField(field);

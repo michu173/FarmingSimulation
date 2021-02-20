@@ -86,16 +86,23 @@ abstract class TractorDrone {
   //DRIVING
   public boolean needsStation()
   {
-    println("Do I need product? :O");
+    println("Do I need product? :O (needsStation)");
     if (needProduct() || needFuel())
     {
       println("i need Product!");
       goToStation();
       return true;
     }
+    println("i dont (needsStation)");
     return false;
   }
   
+    public void goToStation(){
+    driveTo(this.posX, this.implementWidth/2, this.movingSpeed);
+    driveTo(0,0, this.movingSpeed);
+    println("im going there :D (goToStation)");
+    arrivedAtStation();
+  }
   
   
   
@@ -167,13 +174,7 @@ abstract class TractorDrone {
   }
 
   
-  public void goToStation(){
-    driveTo(this.posX, this.implementWidth/2, this.movingSpeed);
-    driveTo(0,0, this.movingSpeed);
-    println("im going there :D (goToStation)");
-    arrivedAtStation();
-  }
-  
+
   
   
   
