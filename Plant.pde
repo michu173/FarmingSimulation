@@ -11,7 +11,7 @@ class Plant{
     Field field;
     
     
-    Plant(Field field,float posX, float posY){
+   public Plant(Field field,float posX, float posY){
       this.field = field;
       this.posX = posX;
       this.posY = posY;

@@ -2,8 +2,8 @@ import java.lang.Math;
 
 abstract class TractorDrone {
 
-  int implementWidth, productTank, fuelTank ;
-  float fuelConsumption, posX, posY, workSpeed, movingSpeed, product, fuel;
+  int implementWidth, productTank, fuelTank, product ;
+  float fuelConsumption, posX, posY, workSpeed, movingSpeed, fuel;
   int lastWorkedWP=0;
   boolean taskComplete = false;
   
@@ -41,9 +41,11 @@ abstract class TractorDrone {
     this.posX = x;
     this.posY = y;
   }
-  protected void emptyProduct()
+  protected void emptyProduct(int product)
   {
+    code_meet.harvested += product;
     this.product = 0;
+    println(code_meet.harvested);
   }
   
   //start of the DRIVING skills
@@ -168,9 +170,9 @@ abstract class TractorDrone {
        if(!this.taskComplete){
        this.lastWorkedWP++;
      }
-       if(this.lastWorkedWP==waypoints.length-2){
-         this.lastWorkedWP=0;
-         this.taskComplete = true;
+    if(this.lastWorkedWP==waypoints.length-2){
+       this.lastWorkedWP=0;
+       this.taskComplete = true;
        }
      }
   }
