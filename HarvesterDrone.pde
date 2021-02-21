@@ -22,11 +22,11 @@ private class HarvesterDrone extends TractorDrone{
       //top and down
       if (!(posY < 1) || !(posY >= field.getSizeY() -1)){
         //to go through the whole list for each plant
-        println("im starting to go over the lsit");
+       // println("im starting to go over the lsit");
         for (int i= 0; i <= plants.size(); i++){
-           println("im going over the whole list");
+           //println("im going over the whole list");
            for (int j = 0; j <= (implementWidth); j++){
-             println("im looking through my width");
+             //println("im looking through my width"); //no problems till here
              float plantX = posX - (implementWidth/2) + j;
              if(plants.get(i).getPosXOfPlant() == plantX && plants.get(i).getPosYOfPlant() == getPosY()){
                println("im in the last if clause");

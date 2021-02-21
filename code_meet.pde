@@ -102,6 +102,7 @@ void draw() {
   }
 }
 //atm it has bugs... the 2nd drone disappears until the first drone passes the mark again..
+//edit: put the mark at o for the y axis, works now
 public boolean passed(float posX, float posY){
   if (posX >= goMarkX && posY >= goMarkY){
     return true;
