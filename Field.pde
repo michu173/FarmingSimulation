@@ -42,7 +42,7 @@ class Field {
   
   
   
-
+//noise functions for a "random" distribution of the field properties
   private float waterNoise(int x, int y, float avg,int offset){
     float water;
   
@@ -106,11 +106,7 @@ class Field {
     }
        
   }
-  
-  
-  
-  
-  
+   
   //GLOBAL GETTERS (for whole field)
   //size in meters
   public int getSizeX(){return sizeX;}

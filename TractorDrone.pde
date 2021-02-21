@@ -41,7 +41,6 @@ abstract class TractorDrone {
     this.posX = x;
     this.posY = y;
   }
-  
   protected void emptyProduct()
   {
     this.product = 0;

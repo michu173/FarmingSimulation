@@ -5,7 +5,7 @@ public class WaterSpreader extends SpreaderDrone{
     
 }
 
-  
+  //spreads Water on the field
   void updateField(float posX, float posY){
     for (int i=0; i<=implementWidth; i++)
     {

@@ -5,7 +5,7 @@ private class SeederDrone extends TractorDrone{
     super(workSpeed,movingSpeed,implementWidth, productTank, fuelTank, fuelConsumption);
 
 }
-
+//plants seeds onto the field
   public void plantIt(float posX, float posY){
 /*    if (getPosY() < 1 || getPosY() >= field.getSizeY() -1)
     print("at the top or bottom");
@@ -28,7 +28,7 @@ private class SeederDrone extends TractorDrone{
     }catch (Exception e){}
     
   }
-
+//tests if more Product is needed
   boolean needProduct(){
     if (product <= 10){
       return true;
@@ -36,7 +36,8 @@ private class SeederDrone extends TractorDrone{
     else
       return false;
   }
-
+//as long as the drone doesnt have to refill something,
+//it works the field and plants seeds
   public void fieldWork(){
     if (!needsStation()){
       workField(field);

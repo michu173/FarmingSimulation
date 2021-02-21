@@ -12,23 +12,18 @@ public ArrayList<Plant> plants = new ArrayList();
 
 void setup() {
 
-
   size(1000, 1000);
-
-
-
-
   colorMode(HSB);
   background(0, 0, 30);
 
   //creates specific field
   //sizeX, sizeY, sunlight, cropType, avgWater, avgHummus, avgLime, avgFert, index
   field = new Field(1000, 1000, 30.0, "test", 25.0, 100.0, 70.0, 150.0, 4256);
-  //plant = new Plant(field, 0, 0);
-
   field.create(); //initializes field based on avg values with noise based on index
 
   /* 
+   //plants random plants on the field without the seederdrone
+   //for testing without seederDrone
    for(int i = 0; i<100; i++){
    plants.add(new Plant(field, random(0, field.getSizeX()), random(0, field.getSizeY())));
    }
@@ -58,7 +53,7 @@ void setup() {
   limeDrone.setStartingPos(0,0);
   
 //initiates Waterspreader drone
-  waterDrone = new WaterSpreader(field, 5, 5, 60, 5000, 5000, 0); 
+  waterDrone = new WaterSpreader(field, 5, 5, 50, 5000, 5000, 0); 
   waterDrone.setStartingPos(0,0);
   waterDrone.atStation();
 }
@@ -72,7 +67,7 @@ void draw() {
     plants.get(i).update(); 
     plants.get(i).show();
   }
-
+    //still needs to be modified, dont now if the cycle works like how its intended to
     cycle(waterDrone, limeDrone, fertDrone, seederDrone /*, harvesterDrone*/);
     
 }

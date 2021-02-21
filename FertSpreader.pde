@@ -5,7 +5,7 @@ public class FertSpreader extends SpreaderDrone{
     
 }
 
-  
+  //spreads fert on the field
   void updateField(float posX, float posY){
     for (int i=0; i<=implementWidth; i++)
     {

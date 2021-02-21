@@ -5,7 +5,7 @@ public class LimeSpreader extends SpreaderDrone{
     
 }
 
-  
+  //spreads Lime on the field
   void updateField(float posX, float posY){
     for (int i=0; i<=implementWidth; i++)
     {
