@@ -9,7 +9,7 @@ class Field {
   private float sunlight, avgWater, avgHummus, avgLime, avgFert;
   private String cropType;
   
-  private Sector[][] Field;
+  private Sector[][] sectors;
   
   //creator for a field 
   //sizeX, sizeY, sunlight, cropType, avgWater, avgHummus, avgLime, avgFert, index
@@ -30,7 +30,7 @@ class Field {
     int sectorsY = (int) sizeY/10;
     
     //initialize array containing field sectors (plants grow on sectors)
-    Field = new Sector[sectorsX][sectorsY];
+    sectors = new Sector[sectorsX][sectorsY];
     
   }
   
@@ -97,11 +97,11 @@ class Field {
   //for initializing field sector values
   public void create()
   {
-    for(int x = 0; x < Field.length ; x++)
+    for(int x = 0; x < sectors.length ; x++)
     {
-      for(int y = 0; y < Field[x].length; y++)
+      for(int y = 0; y < sectors[x].length; y++)
       {
-        Field[x][y] = new Sector(waterNoise(x, y, avgWater, index), humusNoise(x, y, avgHummus, index), limeNoise(x, y, avgLime, index), fertNoise(x, y, avgFert, index));
+        sectors[x][y] = new Sector(waterNoise(x, y, avgWater, index), humusNoise(x, y, avgHummus, index), limeNoise(x, y, avgLime, index), fertNoise(x, y, avgFert, index));
       }
     }
        
@@ -113,8 +113,8 @@ class Field {
   public int getSizeY(){return sizeY;}
   
   //one sector is 10 by 10 meters (for simplicity)
-  public int getSectorsX(){return Field.length;}
-  public int getSectorsY(){return Field[0].length;}
+  public int getSectorsX(){return sectors.length;}
+  public int getSectorsY(){return sectors[0].length;}
   
   //for noise seed
   public int getIndex(){return index;}
@@ -129,28 +129,28 @@ class Field {
   {
     int intx = (int) Math.round(x);
     int inty = (int) Math.round(y);
-    return Field[intx/10][inty/10].getWater();
+    return sectors[intx/10][inty/10].getWater();
   }
   
   public float Hummus(float x, float y)
   {
     int intx = (int) Math.round(x);
     int inty = (int) Math.round(y);
-    return Field[intx/10][inty/10].getHummus();
+    return sectors[intx/10][inty/10].getHummus();
   }
   
   public float Lime(float x, float y)
   {
     int intx = (int) Math.round(x);
     int inty = (int) Math.round(y);
-    return Field[intx/10][inty/10].getLime();
+    return sectors[intx/10][inty/10].getLime();
   }
   
   public float Fert(float x, float y)
   {
     int intx = (int) Math.round(x);
     int inty = (int) Math.round(y);
-    return Field[intx/10][inty/10].getFert();
+    return sectors[intx/10][inty/10].getFert();
   }
   
   
@@ -161,28 +161,28 @@ class Field {
   {
     int intx = (int) Math.round(x);
     int inty = (int) Math.round(y);
-    Field[intx/10][inty/10].incWater(quantity);
+    sectors[intx/10][inty/10].incWater(quantity);
   }
   
   public void updateHummus(float x, float y, int quantity)
   {
     int intx = (int) Math.round(x);
     int inty = (int) Math.round(y);
-    Field[intx/10][inty/10].incHummus(quantity);
+    sectors[intx/10][inty/10].incHummus(quantity);
   }
   
   public void updateLime(float x, float y, int quantity)
   {
     int intx = (int) Math.round(x);
     int inty = (int) Math.round(y);
-    Field[intx/10][inty/10].incLime(quantity);
+    sectors[intx/10][inty/10].incLime(quantity);
   }
   
   public void updateFert(float x, float y, int quantity)
   {
     int intx = (int) Math.round(x);
     int inty = (int) Math.round(y);
-    Field[intx/10][inty/10].incFert(quantity);
+    sectors[intx/10][inty/10].incFert(quantity);
   }
 
 

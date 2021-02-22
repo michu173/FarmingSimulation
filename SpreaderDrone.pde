@@ -20,10 +20,11 @@ public abstract class SpreaderDrone extends TractorDrone{
       if(!needsStation()&&!this.atWork){
       if(driveToWork()){
         this.atWork=true;
+        
       }
     
       }
-      
+      updateField(this.getPosX(), this.getPosY());
   
     if (this.atWork){
       workField(field);

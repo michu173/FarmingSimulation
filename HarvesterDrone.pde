@@ -1,8 +1,11 @@
 private class HarvesterDrone extends TractorDrone{
-  public HarvesterDrone(float workSpeed, float movingSpeed, int implementWidth, int productTank, int fuelTank, float fuelConsumption){
+  public HarvesterDrone(float workSpeed, float movingSpeed, int implementWidth, int productTank, int fuelTank, float fuelConsumption ){
     super(workSpeed,movingSpeed,implementWidth, productTank, fuelTank, fuelConsumption);
     
 }
+
+int radius = 40;
+int totalFruitHarvest =0;
    
 //needs to deliver product when producttank is filled to the brim (-10)
   boolean needProduct(){
@@ -16,8 +19,37 @@ private class HarvesterDrone extends TractorDrone{
       return false;
       }
   }
+  
+  
+  
+  
+  void harvest(){
+  for(int i =0; i<plants.size(); i++){ 
+   if(Math.abs(plants.get(i).posX-this.posX)<radius && Math.abs(plants.get(i).posY-this.posY)<radius){
+       this.product+=plants.get(i).fruit;
+       this.totalFruitHarvest+=plants.get(i).fruit;
+       plants.remove(i);
+   }
+  }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
-  private void fillUp(){
+ /* private void fillUp(){
     try{
       //top and down
       if (!(posY < 1) || !(posY >= field.getSizeY() -1)){
@@ -50,10 +82,10 @@ private class HarvesterDrone extends TractorDrone{
           //fruits of the plant at the given coordinates
           product += Plant.fruit;  
           //remove the plant from the arrayList
-          plants.remove(Plant(field, plantX, getPosY()));  */   
+          plants.remove(Plant(field, plantX, getPosY())); 
     catch (Exception e){
     }
-  }
+  }*/
   //@override
   public boolean atStation(){
     //println("im here");
@@ -71,10 +103,22 @@ private class HarvesterDrone extends TractorDrone{
 
   
   public void fieldWork(){
-    if (!needsStation()){
-      workField(field);
-      fillUp();
-    }
+      if (!needsStation()){
+        harvest();
+      }      
+      if(this.atWork&&needsStation()){
+         this.atWork=false;
+        lastX = posX;
+        lastY = posY;
+      }
+      if(!needsStation()&&!this.atWork){
+        if(driveToWork()){
+          this.atWork=true;
+        }    
+      }       
+      if (this.atWork){
+        workField(field);
+      }
   }
   
  
@@ -91,7 +135,7 @@ private class HarvesterDrone extends TractorDrone{
       fill(0);
       text("HARVEST", this.posX-10, this.posY+25);
       noFill();  
-      circle(this.posX, this.posY, 40);
+      circle(this.posX, this.posY, radius);
     pop();
   }
  

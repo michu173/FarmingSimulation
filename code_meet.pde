@@ -17,7 +17,9 @@ static int harvested;
 
 public  ArrayList<Plant> plants = new ArrayList();
 ArrayList<TractorDrone[]> drones = new ArrayList();
-
+   
+   int harvestBegin = 3000;
+   
 void setup() {
   
   interf = new Interface();
@@ -102,12 +104,10 @@ void draw() {
     seederDrone.show(); 
 
 
-if(seederDrone.taskComplete){
+if(frameCount>harvestBegin){
     harvesterDrone.fieldWork();
-    
-}
     harvesterDrone.show();
-    
+}
     
     interf.plantIF(plants);
     interf.fieldIF(field);
