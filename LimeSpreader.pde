@@ -5,7 +5,7 @@ public class LimeSpreader extends SpreaderDrone{
     
 }
 
-  
+  //spreads Lime on the field
   void updateField(float posX, float posY){
     for (int i=0; i<=implementWidth; i++)
     {
@@ -22,6 +22,18 @@ public class LimeSpreader extends SpreaderDrone{
     }
   }
   
-  
+   void show(){
+    push();
+      colorMode(RGB);
+      fill(0,200,0);
+      rect(this.posX-8, this.posY-8, 16, 16);
+      fill(0);
+      line(this.posX-(this.implementWidth/2), this.posY, this.posX+(this.implementWidth/2), this.posY);
+      fill(0,200,0);
+      rect(this.posX-8, this.posY-8, 16, 16);
+      fill(0);
+      text("LIME", this.posX-10, this.posY+25);
+    pop();
+  }
   
 }

@@ -8,6 +8,8 @@
 void fieldDraw(){
   
   
+  
+  
  
   //show maps for specific soil value with key presses
   //space for start
@@ -68,7 +70,8 @@ void drawField(int type){
     
     push();
     colorMode(RGB);
-    background(0, 100, 0);
+    fill(0, 100, 0);
+    rect(0,0,fieldw, fieldh);
     pop();
   }  
   

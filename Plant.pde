@@ -4,17 +4,17 @@ class Plant{
     int fruit = 0;
     float stage = -6;
     float size;
-    float posX = 5; 
-    float posY = 9;
+    float posX; 
+    float posY;
     int MAXFRUIT = (int) random(5,20);
     float clr = 5;
     Field field;
     
     
-    Plant(Field field,float posx, float posy){
-      this.field=field;
-      this.posX = posx;
-      this.posY = posy;
+   public Plant(Field field,float posX, float posY){
+      this.field = field;
+      this.posX = posX;
+      this.posY = posY;
     }
     
     public void addFruit(){
@@ -24,7 +24,7 @@ class Plant{
     }
     
     public void growth(){
-      float add = 0.01;
+      float add = 0.003;
       float waterDist=Math.abs(100-field.Water(posX, posY));
       float humusDist=Math.abs(100-field.Hummus(posX, posY));
       float limeDist =Math.abs(100-field.Lime(posX, posY));
@@ -68,9 +68,10 @@ class Plant{
       push();
       colorMode(RGB);
       fill(255-(clr*25.5), 200+(clr*5.5), 0);
-      circle(posX*(width/field.getSizeX()), posY*(height/field.getSizeY()), 15*size);
+      circle(posX*(fieldw/field.getSizeX()), posY*(fieldh/field.getSizeY()), 15*size);
       pop();
     }
      
-
+    public float getPosXOfPlant(){return posX;}
+    public float getPosYOfPlant(){return posY;}
 }

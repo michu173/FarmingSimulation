@@ -2,10 +2,15 @@ import java.lang.Math;
 
 abstract class TractorDrone {
 
-  int implementWidth, productTank, fuelTank ;
-  float fuelConsumption, posX, posY, workSpeed, movingSpeed, product, fuel;
+  int implementWidth, productTank, fuelTank, product ;
+  float fuelConsumption, posX, posY, workSpeed, movingSpeed, fuel;
   int lastWorkedWP=0;
   boolean taskComplete = false;
+  boolean atWork = true;
+  float lastX;
+  float lastY;
+
+  
   
   public TractorDrone(float workSpeed, float movingSpeed, int implementWidth, int productTank, int fuelTank, float fuelConsumption)
   {
@@ -20,7 +25,7 @@ abstract class TractorDrone {
   }
   
   
-  
+  //tasks a Drone needs to do
   abstract void fieldWork();
   
   
@@ -31,16 +36,8 @@ abstract class TractorDrone {
   public float getProductTank(){return productTank;}
   public float getFuelTank(){return fuelTank;}
   
-  public boolean needFuel()
-  {
-   float distanceToStation = posX + posY;
-   float fuelToStation = distanceToStation * fuelConsumption;
-   return fuelTank < fuelToStation - 10;
-  }  
-  
-  abstract boolean needProduct(); //if empty then true for seeds and spreader, if full then true for harvester
-  
-  
+ 
+ 
   
   
   //SETTERS
@@ -49,90 +46,116 @@ abstract class TractorDrone {
     this.posX = x;
     this.posY = y;
   }
-  
-  protected void tankFuel()
+  protected void emptyProduct(int product)
   {
-    this.fuel = fuelTank;
-  }
-  
-  protected void tankProduct()
-  {
-    this.product = productTank;
-    println("producttank" + product);
-  }
-  
-  protected void emptyProduct()
-  {
+    code_meet.harvested += product;
     this.product = 0;
+    //println(code_meet.harvested);
   }
   
-  
-  public boolean arrivedAtStation(){
-    println("im here");
-    println("I'm at: " + posX + ", " + posY);
-    if (posX <= 30 && posY <= 30)
-    {
-      println("what do i do now?");
-      atStation();
-      return true;
-    }
-    return false;
-  }
-  
-  abstract void atStation();
-  
-  
-  
-  //DRIVING
+  //start of the DRIVING skills
+  //detects if the drone needs to return to refill
   public boolean needsStation()
   {
-    println("Do I need product? :O");
+    ////println("Do I need product? :O");
     if (needProduct() || needFuel())
     {
-      println("i need Product!");
+      //println("i need Product!");
       goToStation();
       return true;
     }
     return false;
   }
+    //shortage detection for Product
+   abstract boolean needProduct(); //if empty then true for seeds and spreader, if full then true for harvester
+  
+    //shortage detection for fuel
+   public boolean needFuel()
+  {
+   float distanceToStation = posX + posY;
+   float fuelToStation = distanceToStation * fuelConsumption;
+   if(fuelTank -20 <fuelToStation)
+   return true;
+   else
+   return false;
+  }  
+  
+  //goes back to the station at (0,0) 
+  public void goToStation(){
+    driveTo(this.posX, this.implementWidth/2, this.movingSpeed);
+    driveTo(0,0, this.movingSpeed);
+   // //println("im going there :D (goToStation)");
+    atStation();
+  }
   
   
+  boolean driveToWork(){
+    return driveTo(this.lastX, this.lastY, this.movingSpeed);
   
+  }
   
+  //drives to the station with spcified speed
   public boolean driveTo(float xPoint, float yPoint, float speed){
-    
-   if(xPoint-this.posX>speed||xPoint-this.posX<-speed){
-      if(xPoint>this.posX){
-        this.posX+=speed;
-      }else if(xPoint<this.posX){
-        this.posX-=speed;
-      }}else{
+      
+     if(xPoint-this.posX>speed||xPoint-this.posX<-speed){
+        if(xPoint>this.posX){
+          this.posX+=speed;
+        }else if(xPoint<this.posX){
+          this.posX-=speed;
+        }
+      }
+      else{
         this.posX=xPoint;
-        
-        
-    }
-      
-      if(yPoint-this.posY>speed||yPoint-this.posY<-speed){
-      
-      if(yPoint>this.posY){
-        this.posY+=speed;
-      }else if(yPoint<this.posY){
-        this.posY-=speed;
       }
       
-    }else{
-     
-    this.posY=yPoint;
+      if(yPoint-this.posY>speed||yPoint-this.posY<-speed){
+        if(yPoint>this.posY){
+          this.posY+=speed;
+        }
+        else if(yPoint<this.posY){
+          this.posY-=speed;
+        }
+      }
+      else{
+      this.posY=yPoint;
+      }
+      if(yPoint-this.posY>speed||yPoint-this.posY<-speed||xPoint-this.posX>speed||xPoint-this.posX<-speed){
+      return false;
+      }
+      else{return true;}
     }
-    
-    if(yPoint-this.posY>speed||yPoint-this.posY<-speed||xPoint-this.posX>speed||xPoint-this.posX<-speed){
+  
+   public boolean atStation(){
+    ////println("im here");
+    //println("I'm at: " + posX + ", " + posY);
+    if (posX <= 30 && posY <= 30)
+    {
+      ////println("what do i do now?");
+        tankProduct();
+        tankFuel();
+      return true;
+    }
     return false;
-    }else{return true;}
   }
 
+  //refills the fuel
+  protected void tankFuel()
+  {
+    this.fuel = fuelTank;
+    //println("fueltank" + fuel);
+  }
+  //refills the Product
+  protected void tankProduct()
+  {
+    this.product = productTank;
+    //println("producttank" + product);
+  }
+  
 
-    public void workField(Field field){
-      println(this.lastWorkedWP);
+  //how the Drone drives through the field
+
+   public void workField(Field field){
+      //println(this.lastWorkedWP);
     int[][] waypoints = new int[(field.sizeX/(this.implementWidth*2))*4][2];
     for(int i = 0; i<waypoints.length/4; i++){
       for(int j = 0; j<4; j++){
@@ -159,26 +182,12 @@ abstract class TractorDrone {
        if(!this.taskComplete){
        this.lastWorkedWP++;
      }
-       if(this.lastWorkedWP==waypoints.length-2){
-         this.lastWorkedWP=0;
-         this.taskComplete = true;
+    if(this.lastWorkedWP==waypoints.length-2){
+       this.lastWorkedWP=0;
+       this.taskComplete = true;
        }
      }
   }
-
-  
-  public void goToStation(){
-    driveTo(this.posX, this.implementWidth/2, this.movingSpeed);
-    driveTo(0,0, this.movingSpeed);
-    println("im going there :D (goToStation)");
-    arrivedAtStation();
-  }
-  
-  
-  
-  
-  
-  
   
   
   

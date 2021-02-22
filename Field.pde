@@ -42,11 +42,11 @@ class Field {
   
   
   
-
+//noise functions for a "random" distribution of the field properties
   private float waterNoise(int x, int y, float avg,int offset){
     float water;
   
-    water = avg+((5*sin((x+(sin(offset)*3))*0.2))+((5*cos((y+(sin(offset)))*0.1))));
+    water = avg+((10*sin((x+(sin(offset)*3))*0.2))+((10*cos((y+(sin(offset)))*0.1))));
   
   if(water>200){water=200;}
   if(water<0){water=0;}
@@ -57,7 +57,7 @@ class Field {
   private float limeNoise(int x, int y, float avg,int offset){
     float water;
   
-    water = avg+((5*sin((x+(sin(offset*0.5)*3))*0.2))+((5*cos((y+(sin(offset*0.5)))*0.1))));
+    water = avg+((10*sin((x+(sin(offset*0.5)*3))*0.2))+((10*cos((y+(sin(offset*0.5)))*0.1))));
   
   if(water>200){water=200;}
   if(water<0){water=0;}
@@ -69,7 +69,7 @@ class Field {
   private float fertNoise(int x, int y, float avg,int offset){
     float water;
   
-    water = avg+((5*sin((x+(sin(offset*2)*3))*0.2))+((5*cos((y+(sin(offset*2)))*0.1))));
+    water = avg+((10*sin((x+(sin(offset*2)*3))*0.2))+((10*cos((y+(sin(offset*2)))*0.1))));
   
   if(water>200){water=200;}
   if(water<0){water=0;}
@@ -80,7 +80,7 @@ class Field {
    private float humusNoise(int x, int y, float avg,int offset){
     float water;
   
-    water = avg+((5*sin((x+(sin(offset*0.3)*3))*0.2))+((5*cos((y+(sin(offset*0.3)))*0.1))));
+    water = avg+((10*sin((x+(sin(offset*0.3)*3))*0.2))+((10*cos((y+(sin(offset*0.3)))*0.1))));
   
   if(water>200){water=200;}
   if(water<0){water=0;}
@@ -106,11 +106,7 @@ class Field {
     }
        
   }
-  
-  
-  
-  
-  
+   
   //GLOBAL GETTERS (for whole field)
   //size in meters
   public int getSizeX(){return sizeX;}
