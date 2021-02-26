@@ -1,7 +1,7 @@
 class Interface{
   
   int left = 1020;
-
+  float fieldHealth;
 
 void plantIF(ArrayList<Plant> in){
   float counter = 0;
@@ -36,6 +36,10 @@ void plantIF(ArrayList<Plant> in){
   text("Average amount of Fruit: "+ avgfruits,left, 140);
   text("Total amount of Fruit: "+ fruitCounter,left, 160);
   pop();
+}
+
+public float getFieldHealth(){
+  return fieldHealth;
 }
 
 void fieldIF(Field in){
@@ -80,7 +84,7 @@ void fieldIF(Field in){
   text("Average Lime: "+avgLime,left, 420);
   text("Average Hummus: "+avgHummus,left, 440);
   textSize(20);
-  float fieldHealth = 100-(100*((Math.abs(100-avgWater)+Math.abs(100-avgLime)+Math.abs(100-avgFert)+Math.abs(100-avgHummus))/400));
+  fieldHealth = 100-(100*((Math.abs(100-avgWater)+Math.abs(100-avgLime)+Math.abs(100-avgFert)+Math.abs(100-avgHummus))/400));
   text("Field Health: "+fieldHealth+"%",1500, 300);
   fill(255-(fieldHealth*2.55), fieldHealth*2.55, 0);
   rect(1500, 310, 250, 40);

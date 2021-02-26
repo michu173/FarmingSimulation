@@ -10,6 +10,7 @@ public class LimeSpreader extends SpreaderDrone{
     for (int i=0; i<=implementWidth; i++)
     {
       try{
+        
         float deployPosX = posX - (implementWidth/2)+5 + i;
         
         int limestate = (int) field.Lime(deployPosX, posY);

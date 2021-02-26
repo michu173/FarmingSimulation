@@ -10,14 +10,16 @@ public class WaterSpreader extends SpreaderDrone{
     for (int i=0; i<=implementWidth; i++)
     {
       try{
-        float deployPosX = posX - (implementWidth/2)+5 + i;
-        
-        int waterstate = (int) field.Water(deployPosX, posY);
-        if (waterstate <= 100){
-        field.updateWater(deployPosX, posY, (100-waterstate));
-        product -= (100-waterstate);
-        usedProduct += 1;
-        }
+       // if(atWork){
+          float deployPosX = posX - (implementWidth/2)+5 + i;
+          
+          int waterstate = (int) field.Water(deployPosX, posY);
+          if (waterstate <= 100){
+          field.updateWater(deployPosX, posY, (100-waterstate));
+          product -= (100-waterstate);
+          usedProduct += 1;
+          }
+        //}
       }
       catch(Exception e) {
         

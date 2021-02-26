@@ -17,7 +17,7 @@ int sectorSizeX, sectorSizeY;
 public  ArrayList<Plant> plants = new ArrayList();
 ArrayList<TractorDrone[]> drones = new ArrayList();
    
-   int harvestBegin = 10000;
+   int harvestBegin = 12500;
    
 void setup() {
   
@@ -97,13 +97,13 @@ void draw() {
     fertDrone.fieldWork();
     fertDrone.show();
   
-
+if (interf.getFieldHealth()>70){
     //println("Seederdrone: Im starting now!");
     seederDrone.fieldWork();
     seederDrone.show(); 
+}
 
-
-if(frameCount>harvestBegin){
+if(frameCount>harvestBegin && interf.getFieldHealth()>70){
     harvesterDrone.fieldWork();
     harvesterDrone.show();
 }
