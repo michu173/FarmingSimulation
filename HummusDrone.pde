@@ -24,18 +24,18 @@ class HummusDrone extends SpreaderDrone{
     }
   }
   
+
+  
+  
    void show(){
     push();
       colorMode(RGB);
-      fill(183,168,151);
-      rect(this.posX-8, this.posY-8, 16, 16);
       fill(0);
-      line(this.posX-(this.implementWidth/2), this.posY, this.posX+(this.implementWidth/2), this.posY);
-      fill(183,168,151);
-      rect(this.posX-8, this.posY-8, 16, 16);
+      line((this.posX*(1000/field.sizeX))-(this.implementWidth/2), (this.posY*(1000/field.sizeY)), (this.posX*(1000/field.sizeX))+(this.implementWidth/2), (this.posY*(1000/field.sizeY)));
+      fill(183, 168, 151);
+      circle((this.posX*(1000/field.sizeX)), (this.posY*(1000/field.sizeY)), 16);
       fill(0);
-      text("Hummus", this.posX-10, this.posY+25);
+      text("HUMMUS", (this.posX*(1000/field.sizeX))-10, (this.posY*(1000/field.sizeY))+25);
     pop();
   }
-  
 }

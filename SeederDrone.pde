@@ -77,17 +77,17 @@ public int addedPlants = 0;
       
   }
   
+
   
-  void show(){
+   void show(){
     push();
       colorMode(RGB);
-      fill(0,200,0);
-      rect(this.posX-8, this.posY-8, 16, 16);
-      
-      fill(100,100,0);
-      rect(this.posX-8, this.posY-8, 16, 16);
       fill(0);
-      text("SEEDER", this.posX-10, this.posY+25);
+      line((this.posX*(1000/field.sizeX))-(this.implementWidth/2), (this.posY*(1000/field.sizeY)), (this.posX*(1000/field.sizeX))+(this.implementWidth/2), (this.posY*(1000/field.sizeY)));
+      fill(100, 100, 0);
+      circle((this.posX*(1000/field.sizeX)), (this.posY*(1000/field.sizeY)), 16);
+      fill(0);
+      text("SEEDER", (this.posX*(1000/field.sizeX))-10, (this.posY*(1000/field.sizeY))+25);
     pop();
   }
 }

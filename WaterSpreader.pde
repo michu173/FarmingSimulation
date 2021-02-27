@@ -27,17 +27,17 @@ public class WaterSpreader extends SpreaderDrone{
     }
   }
   
+
+  
    void show(){
     push();
       colorMode(RGB);
-      fill(0,200,0);
-      rect(this.posX-8, this.posY-8, 16, 16);
       fill(0);
-      line(this.posX-(this.implementWidth/2), this.posY, this.posX+(this.implementWidth/2), this.posY);
+      line((this.posX*(1000/field.sizeX))-(this.implementWidth/2), (this.posY*(1000/field.sizeY)), (this.posX*(1000/field.sizeX))+(this.implementWidth/2), (this.posY*(1000/field.sizeY)));
       fill(0,0,220);
-      rect(this.posX-8, this.posY-8, 16, 16);
+      circle((this.posX*(1000/field.sizeX)), (this.posY*(1000/field.sizeY)), 16);
       fill(0);
-      text("WATER", this.posX-10, this.posY+25);
+      text("WATER", (this.posX*(1000/field.sizeX))-10, (this.posY*(1000/field.sizeY))+25);
     pop();
   }
 }

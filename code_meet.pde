@@ -31,7 +31,7 @@ void setup() {
 
   //creates specific field
   //sizeX, sizeY, sunlight, cropType, avgWater, avgHummus, avgLime, avgFert, index
-  field = new Field(1000, 1000, 30.0, "test", 50.0, 50.0, 70.0, 60.0, 4256);
+  field = new Field(500, 500, 30.0, "test", 50.0, 50.0, 70.0, 60.0, 4256);
   field.create(); //initializes field based on avg values with noise based on index
 
   /*
@@ -72,7 +72,7 @@ hummusDrone2.setStartingPos(10, 0);
   
   
 //initiates fertilizer Drone
-  fertDrone = new FertSpreader(field, 5, 5, 50, 8000, 5000, 1);
+  fertDrone = new FertSpreader(field, 3, 3, 50, 8000, 5000, 1);
   fertDrone.setStartingPos(0,0);
   fertDrone.atStation();
   
@@ -123,7 +123,9 @@ void draw() {
   
 if (interf.getFieldHealth()>70){
     //println("Seederdrone: Im starting now!");
+    if(!sseederDrone.taskComplete){
     seederDrone.fieldWork();
+    }
     seederDrone.show(); 
 }else{
   harvestBegin=frameCount+5000;

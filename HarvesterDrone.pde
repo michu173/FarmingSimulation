@@ -69,20 +69,17 @@ int totalFruitHarvest =0;
   }
   
  
- 
-  void show(){
+
+  
+   void show(){
     push();
       colorMode(RGB);
-      fill(0,200,0);
-      rect(this.posX-8, this.posY-8, 16, 16);
       fill(0);
-      line(this.posX-(this.implementWidth/2), this.posY, this.posX+(this.implementWidth/2), this.posY);
-      fill(100,100,100);
-      rect(this.posX-8, this.posY-8, 16, 16);
+      line((this.posX*(1000/field.sizeX))-(this.implementWidth/2), (this.posY*(1000/field.sizeY)), (this.posX*(1000/field.sizeX))+(this.implementWidth/2), (this.posY*(1000/field.sizeY)));
+      fill(100, 100, 100);
+      circle((this.posX*(1000/field.sizeX)), (this.posY*(1000/field.sizeY)), 16);
       fill(0);
-      text("HARVEST", this.posX-10, this.posY+25);
-      noFill();  
-      circle(this.posX, this.posY, radius);
+      text("HARVEST", (this.posX*(1000/field.sizeX))-10, (this.posY*(1000/field.sizeY))+25);
     pop();
   }
  
