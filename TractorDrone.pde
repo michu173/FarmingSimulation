@@ -92,8 +92,15 @@ abstract class TractorDrone {
     return driveTo(this.lastX, this.lastY, this.movingSpeed);
   }
   
+  
+  
+  
+  
   //drives to the station with spcified speed
   public boolean driveTo(float xPoint, float yPoint, float speed){
+    
+    
+    
     float consumption = speed*fuelConsumption*times;
       if(xPoint-this.posX>speed||xPoint-this.posX<-speed){
         if(xPoint>this.posX){
@@ -132,6 +139,11 @@ abstract class TractorDrone {
       else{return true;}
     }
   
+  
+  
+  
+  
+  
    public boolean atStation(){
     ////println("im here");
     //println("I'm at: " + posX + ", " + posY);
@@ -161,6 +173,10 @@ abstract class TractorDrone {
     this.product = productTank;
     //println("producttank" + product);
   }
+  
+  
+  
+  
   
 
   //how the Drone drives through the field

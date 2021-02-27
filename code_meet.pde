@@ -1,5 +1,7 @@
 Plant plant;
 Field field;
+HummusDrone hummusDrone1;
+HummusDrone hummusDrone2;
 LimeSpreader limeDrone;
 WaterSpreader waterDrone;
 FertSpreader fertDrone;
@@ -48,6 +50,16 @@ void setup() {
   drawField(0);
   
 //initiating Drones with (field), workSpeed, movingSpeed, implementWidth, productTank, fuelTank, fuelConsumption
+
+//innitiates hummusDrone
+hummusDrone1 = new HummusDrone(field, 1, 10, 50, 2000, 5000, 1);
+hummusDrone1.atStation();
+hummusDrone1.setStartingPos(0, 0);
+
+hummusDrone2 = new HummusDrone(field, 1, 10, 50, 2000, 5000, 1);
+hummusDrone2.atStation();
+hummusDrone2.setStartingPos(10, 0);
+
 //initiates seederDrone
   seederDrone = new SeederDrone(5, 5, 10, 1500, 10000, 1);
   seederDrone.atStation();
@@ -77,13 +89,19 @@ void setup() {
 
 void draw() {
   background(30, 30, 30);
+  
+  push();
+  noStroke();
   drawField(0);
+
+  
   fieldDraw();
   for (int i= 0; i < plants.size(); i++)
   { 
     plants.get(i).update(); 
     plants.get(i).show();
   }
+  pop();
 
  //println("Waterdrone: Im starting now!");
     waterDrone.fieldWork();
@@ -91,6 +109,12 @@ void draw() {
   
     limeDrone.fieldWork();
     limeDrone.show();
+    
+    hummusDrone1.fieldWork();
+    hummusDrone1.show();
+  
+    hummusDrone2.fieldWork();
+    hummusDrone2.show();
   
 
     //println("Fertdrone: Im starting now!");
@@ -101,6 +125,8 @@ if (interf.getFieldHealth()>70){
     //println("Seederdrone: Im starting now!");
     seederDrone.fieldWork();
     seederDrone.show(); 
+}else{
+  harvestBegin=frameCount+5000;
 }
 
 if(frameCount>harvestBegin && interf.getFieldHealth()>70){
