@@ -15,9 +15,10 @@ public class LimeSpreader extends SpreaderDrone{
         
         int limestate = (int) field.Lime(deployPosX, posY);
         if (limestate <= 100){
-        field.updateLime(deployPosX, posY, (100-limestate));
-        product -= (100-limestate);
-        usedProduct += 1;
+          int usingProduct = 100-limestate;
+          field.updateLime(deployPosX, posY, usingProduct);
+          product -= usingProduct;
+          usedProduct += usingProduct;
         }
       }
       catch(Exception e) { }

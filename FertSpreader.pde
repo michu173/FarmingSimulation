@@ -14,9 +14,10 @@ public class FertSpreader extends SpreaderDrone{
         
         int fertstate = (int) field.Fert(deployPosX, posY);
         if (fertstate <= 100){
-        field.updateFert(deployPosX, posY, (100-fertstate));
-        product -= (100-fertstate);
-        usedProduct += 1;
+          int usingProduct = 100-fertstate;
+          field.updateFert(deployPosX, posY, usingProduct);
+          product -= usingProduct;
+          usedProduct += usingProduct;
         }
       }
       catch(Exception e) {

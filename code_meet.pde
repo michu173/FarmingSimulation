@@ -19,7 +19,7 @@ int sectorSizeX, sectorSizeY;
 public  ArrayList<Plant> plants = new ArrayList();
 ArrayList<TractorDrone[]> drones = new ArrayList();
    
-   int harvestBegin = 12500;
+   int harvestBegin = 5000;
    
 void setup() {
   
@@ -51,14 +51,14 @@ void setup() {
   
 //initiating Drones with (field), workSpeed, movingSpeed, implementWidth, productTank, fuelTank, fuelConsumption
 
-//innitiates hummusDrone
-hummusDrone1 = new HummusDrone(field, 1, 10, 50, 2000, 5000, 1);
-hummusDrone1.atStation();
-hummusDrone1.setStartingPos(0, 0);
-
-hummusDrone2 = new HummusDrone(field, 1, 10, 50, 2000, 5000, 1);
-hummusDrone2.atStation();
-hummusDrone2.setStartingPos(10, 0);
+  //innitiates hummusDrone
+  hummusDrone1 = new HummusDrone(field, 1, 10, 50, 2000, 5000, 1);
+  hummusDrone1.atStation();
+  hummusDrone1.setStartingPos(0, 0);
+  
+  hummusDrone2 = new HummusDrone(field, 1, 10, 50, 2000, 5000, 1);
+  hummusDrone2.atStation();
+  hummusDrone2.setStartingPos(10, 0);
 
 //initiates seederDrone
   seederDrone = new SeederDrone(5, 5, 10, 1500, 10000, 1);
@@ -121,14 +121,13 @@ void draw() {
     fertDrone.fieldWork();
     fertDrone.show();
   
-if (interf.getFieldHealth()>70){
+  if (interf.getFieldHealth()>70){
     //println("Seederdrone: Im starting now!");
-    if(!sseederDrone.taskComplete){
-    seederDrone.fieldWork();
-    }
     seederDrone.show(); 
-}else{
-  harvestBegin=frameCount+5000;
+    if(!seederDrone.taskComplete){
+    seederDrone.fieldWork();
+    harvestBegin=frameCount+1000;
+    }
 }
 
 if(frameCount>harvestBegin && interf.getFieldHealth()>70){
@@ -140,13 +139,4 @@ if(frameCount>harvestBegin && interf.getFieldHealth()>70){
     interf.fieldIF(field);
     interf.droneIF(drones);
   
-}
-//atm it has bugs... the 2nd drone disappears until the first drone passes the mark again..
-//edit: put the mark at o for the y axis, works now
-public boolean passed(float posX, float posY){
-  if (posX >= goMarkX && posY >= goMarkY){
-    return true;
-  }
-  else
-    return false;
 }

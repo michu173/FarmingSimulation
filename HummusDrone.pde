@@ -15,9 +15,10 @@ class HummusDrone extends SpreaderDrone{
         
         int hummusstate = (int) field.Hummus(deployPosX, posY);
         if (hummusstate <= 100){
-        field.updateHummus(deployPosX, posY, (100-hummusstate));
-        product -= (100-hummusstate);
-        usedProduct += 1;
+          int usingProduct = 100-hummusstate;
+          field.updateHummus(deployPosX, posY, usingProduct);
+          product -= usingProduct;
+          usedProduct += usingProduct;
         }
       }
       catch(Exception e) { }

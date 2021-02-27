@@ -140,41 +140,56 @@ void droneIF(ArrayList<TractorDrone[]> in){
   text("Used Lime: " + limeDrone.usedProduct + " kilogram" + (limeDrone.usedProduct == 1 ? "" : "s"), left+430, vert+180);
   text("Used Fuel: " + limeDrone.getUsedFuel() + " liters", left+430, vert+200);
 
-  //for HumusDrone?
+//2nd row
+
+
+  //for HumusDrone1
   fill(183,168,151); //rectangle color
   rect(left, vert+260, 200, 200);
   fill(255); //textcolor
-  text("Hummus Drone:", left+10, vert+280);
-  text("Refilled: " + " time", left+10, vert+300);
-  text("Used Fuel: " + " liters", left+10, vert+320);
+  text("Hummus Drone 1:", left+10, vert+280);
+  text("Amount of hummus left \nuntill refill: " + hummusDrone1.product, left+10, vert+300);
+
+  text("Amount of fuel left: " + hummusDrone1.fuel, left+10, vert+350);
+  text("Refilled: " + hummusDrone1.getVisitStation() + " time" + (hummusDrone1.getVisitStation() == 1 ? "" : "s"), left+10, vert+370);
+  text("Used Lime: " + hummusDrone1.usedProduct + " kilogram" + (hummusDrone1.usedProduct == 1 ? "" : "s"), left+10, vert+390);
+  text("Used Fuel: " + hummusDrone1.getUsedFuel() + " liters", left+10, vert+410);
   
-  
-  
-  
+   //for HumusDrone2
+  fill(183,168,151); //rectangle color
+  rect(left+210, vert+260, 200, 200);
+  fill(255); //textcolor
+  text("Hummus Drone 2:", left+220, vert+280);
+  text("Amount of hummus left \nuntill refill: " + hummusDrone2.product, left+220, vert+300);
+
+  text("Amount of fuel left: " + hummusDrone2.fuel, left+220, vert+350);
+  text("Refilled: " + hummusDrone2.getVisitStation() + " time" + (hummusDrone2.getVisitStation() == 1 ? "" : "s"), left+220, vert+370);
+  text("Used Lime: " + hummusDrone2.usedProduct + " kilogram" + (hummusDrone2.usedProduct == 1 ? "" : "s"), left+220, vert+390);
+  text("Used Fuel: " + hummusDrone2.getUsedFuel() + " liters", left+220, vert+410);
   
   //for fertDrone
   fill(#6B4423); //rectangle color
-  rect(left+210, vert+260, 200, 200);
+  rect(left+420, vert+260, 200, 200);
   fill(255); //textcolor
-  text("Fertilizer Drone:", left+220, vert+280);
-  text("Amount of fertilizer left \nuntill refill: " + fertDrone.product, left+220, vert+300);
+  text("Fertilizer Drone:", left+430, vert+280);
+  text("Amount of fertilizer left \nuntill refill: " + fertDrone.product, left+430, vert+300);
 
-  text("Amount of fuel left: " + fertDrone.fuel, left+220, vert+350);
-  text("Refilled: " + fertDrone.getVisitStation() + " time" + (fertDrone.getVisitStation() == 1 ? "" : "s"), left+220, vert+370);
-  text("Used Fertilizer: " + fertDrone.usedProduct + " kilogram" + (fertDrone.usedProduct == 1 ? "" : "s"), left+220, vert+390);
-  text("Used Fuel: " + fertDrone.getUsedFuel() + " liters", left+220, vert+410);
+  text("Amount of fuel left: " + fertDrone.fuel, left+430, vert+350);
+  text("Refilled: " + fertDrone.getVisitStation() + " time" + (fertDrone.getVisitStation() == 1 ? "" : "s"), left+430, vert+370);
+  text("Used Fertilizer: " + fertDrone.usedProduct + " kilogram" + (fertDrone.usedProduct == 1 ? "" : "s"), left+430, vert+390);
+  text("Used Fuel: " + fertDrone.getUsedFuel() + " liters", left+430, vert+410);
 
   //for HarvesterDrone
   fill(50,50,50); //rectangle color
-  rect(left+420, vert+260, 200, 200);
+  rect(left+630, vert+260, 200, 200);
   fill(255); //textcolor
-  text("Harvester:", left+430, vert+280);
-  text("Amount of space left \nuntill return to Station: " + (harvesterDrone.productTank - harvesterDrone.product), left+430, vert+300);
+  text("Harvester:", left+640, vert+280);
+  text("Amount of space left \nuntill return to Station: " + (harvesterDrone.productTank - harvesterDrone.product), left+640, vert+300);
   
-  text("Amount of fuel left: " + harvesterDrone.fuel, left+430, vert+350);
-  text("Emptied fruittank: " + (harvesterDrone.getVisitStation() - 1) + " time" + (harvesterDrone.getVisitStation() == 1 ? "" : "s"), left+430, vert+370);
-  text("Harvested Fruits: " + harvesterDrone.totalFruitHarvest, left+430, vert+390);
-  text("Used Fuel: " + harvesterDrone.getUsedFuel() + " liters", left+430, vert+410);
+  text("Amount of fuel left: " + harvesterDrone.fuel, left+640, vert+350);
+  text("Emptied fruittank: " + (harvesterDrone.getVisitStation() - 1) + " time" + (harvesterDrone.getVisitStation() == 1 ? "" : "s"), left+640, vert+370);
+  text("Harvested Fruits: " + harvesterDrone.totalFruitHarvest, left+640, vert+390);
+  text("Used Fuel: " + harvesterDrone.getUsedFuel() + " liters", left+640, vert+410);
 
   fill(255);
   pop();
